@@ -31,7 +31,6 @@ spec:
   selector:
     app: user
     tier: app
-    project: roboshop
   ports:
   - name: mongodb-port
     protocol: TCP
