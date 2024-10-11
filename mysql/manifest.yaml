@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    app: mysql
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: db
+    spec:
+      containers:
+      - image: gspvsr/mysql:1.0.0
+        name: nginx
+        envFrom:
+        - configMapRef:
+            name: catalogue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+spec:
+  selector:
+    app: mysql
+    tier: db
+  ports:
+  - name: mysql-port
+    protocol: TCP
+    port: 3306 # This prot belongs to service
+    targetPort: 3306 # this port belongs to container
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: roboshop
+data:
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  MYSQL_DATABASE: "cities"
+  MYSQL_USER: "shipping"
+  MYSQL_PASSWORD: "RoboShop@1"
