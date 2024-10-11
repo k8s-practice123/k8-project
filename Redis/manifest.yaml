@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: gspvsr/redis:1.0.0
+        image: gspvsr/redis
 ---
 apiVersion: v1
 kind: Service
