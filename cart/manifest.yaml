@@ -43,5 +43,5 @@ metadata:
   namespace: roboshop
 data:
   REDIS_HOST: "redis"
-  CATALOGUE_HOST: "catalogue"
+  CATALOGUE_HOST: catalogue
   CATALOGUE_PORT: "8080"  # Ensure to quote the value if it's meant to be a string
