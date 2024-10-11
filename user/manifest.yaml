@@ -36,7 +36,7 @@ spec:
     tier: app
     project: roboshop
   ports:
-  - name: catalogue-port
+  - name: mongodb-port
     protocol: TCP
     port: 8080 # Service Port
     targetPort: 8080 # container-port
@@ -44,9 +44,9 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: catalogue
+  name: user
   namespace: roboshop
 data:
   MONGO: "true"
-  MONGO_url: "mongodb://mongodb:27017/user"
+  MONGO_URL: "mongodb://mongodb:27017/user"
   REDIS_HOST: "redis"
