@@ -26,7 +26,7 @@ spec:
         image: gspvsr/payment:1.0.0
         imagePullPolicy: Always
         envFrom:
-        - secretRef:
+        - configMapRef:  # If you meant to use a ConfigMap
             name: payment
 ---
 apiVersion: v1
