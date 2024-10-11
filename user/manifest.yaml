@@ -6,20 +6,17 @@ metadata:
   labels: 
     app: user
     tier: app
-    project: roboshop
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: user
       tier: app
-      project: roboshop
   template:
     metadata:
       labels:
         app: user
         tier: app
-        project: roboshop
     spec:
       containers:
       - name: user
