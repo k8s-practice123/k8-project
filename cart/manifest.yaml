@@ -3,23 +3,17 @@ kind: Deployment
 metadata:
   name: cart
   namespace: roboshop
-  labels: # these labels are deployment labels
+  labels:
     app: cart
-    project: roboshop
-    tier: app
 spec:
   replicas: 1
   selector:
-    matchLabels: # these labels are used to find the pods
+    matchLabels:
       app: cart
-      project: roboshop
-      tier: app
   template:
     metadata:
-      labels: # these labels are pod labels
+      labels:
         app: cart
-        project: roboshop
-        tier: app
     spec:
       containers:
       - name: cart
@@ -37,12 +31,10 @@ metadata:
 spec:
   selector:
     app: cart
-    project: roboshop
-    tier: app
   ports:
   - protocol: TCP
-    port: 8080 #service-port
-    targetPort: 8080 #container-port
+    port: 8080
+    targetPort: 8080
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -51,5 +43,5 @@ metadata:
   namespace: roboshop
 data:
   REDIS_HOST: "redis"
-  CATALOGUE_HOST: catalogue
-  CATALOGUE_PORT: 8080
+  CATALOGUE_HOST: "catalogue"
+  CATALOGUE_PORT: "8080"  # Ensure to quote the value if it's meant to be a string
