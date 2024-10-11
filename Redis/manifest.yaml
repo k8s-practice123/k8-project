@@ -6,20 +6,17 @@ metadata:
   labels: 
     app: redis
     tier: app
-    project: roboshop
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: redis
       tier: app
-      project: roboshop
   template:
     metadata:
       labels:
         app: redis
         tier: app
-        project: roboshop
     spec:
       containers:
       - name: redis
@@ -34,7 +31,6 @@ spec:
   selector:
     app: redis
     tier: app
-    project: roboshop
   ports:
   - name: redis-port
     protocol: TCP
